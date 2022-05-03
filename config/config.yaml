@@ -23,14 +23,14 @@ message:
     # 自己搭建请更换，否则保持默认
     server: https://api.day.app
     # Bark客户端生成的KEY
-    apikey: AmGnn9WZSJKfcsCcjDYnim
+    apikey: 9wVyUE2CWqHgcg8KmJyVck
     custom:
       0:
         # 第三方推送服务使用的token
         token: AGZpWR6JbUacKjH
-        # Bark消息铃声
+        # Bark消息铃声，默认telegraph
         sound: telegraph
-        # Bark消息关联群组
+        # Bark消息关联群组，默认“未知”
         group: watchtower
         # Bark icon
         icon: https://s1.ax1x.com/2022/05/01/OCm3L9.png
@@ -42,7 +42,7 @@ message:
         # Bark消息铃声
         sound: telegraph
         # Bark消息关联群组
-        group:
+        group: watchtower
         # Bark icon
         icon: https://s1.ax1x.com/2022/05/01/OCm3L9.png
         # Bark 跳转打开url

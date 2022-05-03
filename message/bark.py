@@ -51,11 +51,11 @@ class Bark:
                         "device_key": self.__apikey,
                         "title": title,
                         "category": "category",
-                        "sound": custom_cfg['sound'],
+                        "sound": (custom_cfg['sound'] if custom_cfg['sound'] else "telegraph"),
                         "badge": 1,
                         "icon": custom_cfg['icon'],
-                        "group": custom_cfg['group'],
-                        "url": custom_cfg['url']
+                        "group": (custom_cfg['group'] if custom_cfg['group'] else "未知"),
+                        "url": (custom_cfg['url'] if custom_cfg['url'] else "")
                     }),
                     timeout=10
                 )
