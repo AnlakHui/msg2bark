@@ -5,7 +5,7 @@ from collections import deque
 from threading import Lock
 import ruamel.yaml
 
-# import log
+import log
 
 # 默认Headers
 DEFAULT_HEADERS = {
