@@ -1,4 +1,10 @@
-flask>=2.1.1
-ruamel.yaml>=0.17.19
 jsonify>=0.1
-requests>=2.25
+markupsafe>=2.1.1
+flask>=2.1.1
+requests[socks]>=2.27.1
+urllib3>=1.26.9
+flask-httpauth>=4.5.0
+flask-login>=0.6.0
+cn2an>=0.5.16
+anitopy>=2.1.0
+ruamel.yaml>=0.17.19

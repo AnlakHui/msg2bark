@@ -1,0 +1,371 @@
+<div class="container-xl">
+  <!-- Page title -->
+  <div class="page-header d-print-none">
+    <div class="row align-items-center">
+      <div class="col">
+        <h2 class="page-title">
+          资源搜索
+        </h2>
+      </div>
+      <!-- Page title actions -->
+    </div>
+    <div class="col-auto ms-auto d-print-none">
+      <div class="d-flex btn-list">
+        <div class="input-icon">
+          <input id="search_word" type="text" value="" class="form-control" placeholder="Search…">
+          <span class="input-icon-addon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="10" cy="10" r="7" /><line x1="21" y1="21" x2="15" y2="15" /></svg>
+          </span>
+        </div>
+        <button id="search_btn" value="" class="btn btn-primary d-sm-inline-block" onclick="javascript:search_media()">搜索</button>
+        <span class="d-sm-inline">
+          <a href="javascript:show_role_modal()" class="btn w-100 btn-icon" title="过滤规则">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-adjustments-horizontal" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+               <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+               <circle cx="14" cy="6" r="2"></circle>
+               <line x1="4" y1="6" x2="12" y2="6"></line>
+               <line x1="16" y1="6" x2="20" y2="6"></line>
+               <circle cx="8" cy="12" r="2"></circle>
+               <line x1="4" y1="12" x2="6" y2="12"></line>
+               <line x1="10" y1="12" x2="20" y2="12"></line>
+               <circle cx="17" cy="18" r="2"></circle>
+               <line x1="4" y1="18" x2="15" y2="18"></line>
+               <line x1="19" y1="18" x2="20" y2="18"></line>
+            </svg>
+          </a>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 业务页面代码 -->
+{% if Count > 0 %}
+<div class="page-body">
+  <div class="container-xl">
+    <div class="row row-cards">
+      {% for Item in Items  %}
+      <div class="col-sm-6 col-lg-3">
+        <div class="card card-sm">
+          <div class="ribbon ribbon-top ribbon-bookmark {% if Item[11] > 8 %} bg-green {% elif Item[11] <= 8 and Item[11] >= 6 %} bg-blue {% else %} bg-orange {% endif %}">{{ Item[11] }}</div>
+          <a href="javascript:show_download_modal('{{ Item[0] }}','{{ Item[1] }}')" class="d-block" ><img src="{{ Item[9] }}" class="card-img-top" title="点击添加下载"></a>
+          <div class="card-body">
+            <div class="d-flex align-items-center mb-2">
+              <span class="avatar me-2 rounded">
+                {% if Item[10] == "MOV" %}
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-movie" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                   <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+                   <line x1="8" y1="4" x2="8" y2="20"></line>
+                   <line x1="16" y1="4" x2="16" y2="20"></line>
+                   <line x1="4" y1="8" x2="8" y2="8"></line>
+                   <line x1="4" y1="16" x2="8" y2="16"></line>
+                   <line x1="4" y1="12" x2="20" y2="12"></line>
+                   <line x1="16" y1="8" x2="20" y2="8"></line>
+                   <line x1="16" y1="16" x2="20" y2="16"></line>
+                </svg>
+                {% else %}
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-tv" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                   <rect x="3" y="7" width="18" height="13" rx="2"></rect>
+                   <polyline points="16 3 12 7 8 3"></polyline>
+                </svg>
+                {% endif %}
+              </span>
+              <div>
+                <div><a href="{{ Item[5] }}" target="_blank" title="点击下载种子文件"><strong>{{ Item[1]}}</strong></a></div>
+                <div class="text-muted"><strong>{{ Item[6]}} {{ Item[2]}} {{ Item[3]}}</strong></div>
+              </div>
+              <div class="ms-auto">
+                <span class="text-muted">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-world-upload" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                     <path d="M21 12a9 9 0 1 0 -9 9"></path>
+                     <path d="M3.6 9h16.8"></path>
+                     <path d="M3.6 15h8.4"></path>
+                     <path d="M11.578 3a17 17 0 0 0 0 18"></path>
+                     <path d="M12.5 3c1.719 2.755 2.5 5.876 2.5 9"></path>
+                     <path d="M18 21v-7m3 3l-3 -3l-3 3"></path>
+                  </svg>
+                  {{ Item[4] }}
+                </span>
+              </div>
+            </div>
+            {% if Item[12] %}
+            <div class="text-muted border-top pt-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-file-description" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                 <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+                 <path d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"></path>
+                 <path d="M9 17h6"></path>
+                 <path d="M9 13h6"></path>
+              </svg>
+              <small>{{ Item[12] }}</small>
+            </div>
+            {% endif %}
+            {% if Item[13] %}
+            <div class="text-muted">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon me-2 text-muted" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0" /><path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0" /><line x1="3" y1="6" x2="3" y2="19" /><line x1="12" y1="6" x2="12" y2="19" /><line x1="21" y1="6" x2="21" y2="19" /></svg>
+              <small>{{ Item[13] }}</small>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+     {% endfor %}
+    </div>
+  </div>
+</div>
+{% else %}
+<div class="page-body">
+  <div class="container-xl d-flex flex-column justify-content-center">
+    <div class="empty">
+      <div class="empty-img"><img src="./static/img/posting_photo.svg" height="128"  alt="">
+      </div>
+      <p class="empty-title" id="search_tip_title">没有记录</p>
+      <p class="empty-subtitle text-muted" id="search_tip_text">
+        输入想看的电影、电视剧名称，点击搜索试试看吧。
+      </p>
+    </div>
+  </div>
+</div>
+{% endif %}
+<div class="modal modal-blur fade" id="download-modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="modal-title">确认提示</div>
+        <div id="download_start_message">是否立即下载该资源？</div>
+      </div>
+      <div class="modal-footer">
+        <input type="hidden" id="download_start_id" />
+        <button type="button" class="btn btn-link link-secondary me-auto" data-bs-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-danger" id="download_start_btn">确定</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal modal-blur fade" id="download-modal-success" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal-status bg-success"></div>
+      <div class="modal-body text-center py-4">
+        <!-- Download SVG icon from http://tabler-icons.io/i/circle-check -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon mb-2 text-green icon-lg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="9" /><path d="M9 12l2 2l4 -4" /></svg>
+        <h3>成功</h3>
+        <input type="hidden" id="download_start_name" />
+        <div class="text-muted" id="download_finished_str">添加下载成功！</div>
+      </div>
+      <div class="modal-footer">
+        <div class="w-100">
+          <div class="row">
+            <div class="col"><a href="#" class="btn btn-success w-100" data-bs-dismiss="modal">
+                确定
+              </a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal modal-blur fade" id="modal-search-rule" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal-search-rule-title">过滤规则</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="mb-3">
+              <label class="form-label">包含规则(<a href="#" title="【必须包含的关键字】：只有种子名称中包括这些关键字才会命中&#10;1、对大小写不敏感，不能带引号，配置为空为不启用该规则&#10;2、可以配置普通的关键字，也可以配置正则表达式，可以配置多行&#10;3、多行之间是【与】的关系，即多行条件都不包含时才会命中&#10;4、单行内可以用'|'来表示【或】，即包括其一即命中">?</a>)</label>
+              <pre id="search_include_pre"></pre>
+              <textarea class="form-control" id="search_include" rows="2" placeholder="必须包含的关键字或正则表达式"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="mb-3">
+              <label class="form-label">排除规则(<a href="#" title="【不能包含的关键字】：种子名称中如果有这些关键字则会被跳过&#10;1、对大小写不敏感，不能带引号，配置为空为不启用该规则&#10;2、可以配置普通的关键字，也可以配置正则表达式，可以配置多行&#10;3、多行之间是【与】的关系，即多行条件都不包含时才会跳过&#10;4、单行内可以用'|'来表示【或】，即包括其一即跳过">?</a>)</label>
+              <pre id="search_exclude_pre"></pre>
+              <textarea class="form-control" id="search_exclude" rows="2" placeholder="不能包含的关键字或正则表达式"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="mb-3">
+              <label class="form-label">优先规则(<a href="#" title="【优先选择的关键字】：种子名称或副标题中如果有这些关键字则会被优先选择，优先级高于站点&#10;1、对大小写不敏感，不能带引号，配置为空为不启用该规则&#10;2、可以配置多行，一行是一个关键字或正则表达式，排前面的优先级高">?</a>)</label>
+              <pre id="search_note_pre"></pre>
+              <textarea class="form-control" id="search_note" rows="2" placeholder="优先选择的关键字或正则表达式"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div>
+              <label class="form-label">大小限制(<a href="#" title="【限制文件大小】：只有满足大小限制的种子文件才会被命中，单位是GB&#10;1、只针对电影有效，配置为0或不配置则不启用该条件&#10;2、对大小写不敏感，不能带引号，配置为空为不启用该条件&#10;3、如只配置1个数字，表示小于等于该大小的才会被命中&#10;4、如配置2个数字(使用英文逗号分隔)，表示在中间大小的才会被命中">?</a>)</label>
+              <pre id="search_size_pre"></pre>
+              <input type="text" class="form-control" id="search_size" value="" placeholder="限制电影文件大小，单位GB" autocomplete="off">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="rule_close_btn" class="btn btn-link link-secondary" data-bs-dismiss="modal">
+          取消
+        </button>
+        <button id="save_or_edit_rule_btn" class="btn btn-primary ms-auto">
+          编辑/保存
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  // 关键字
+  var search_word = "{{ SearchWord }}";
+  var need_search = "{{ NeedSearch }}";
+  var result_count = {{ Count }}
+  if(search_word != ""){
+      $("#search_word").val(decodeURI(search_word));
+      if(need_search){
+        search_media();
+      }else if(!result_count){
+        $("#search_tip_title").text(search_word + " 未找到任何资源")
+        $("#search_tip_text").text("")
+      }
+  }
+  // 显示下载提示框
+  function show_download_modal(id, name){
+      $("#download_start_id").val(id);
+      $("#download_start_name").val(name);
+      $("#download_start_message").text("是否立即下载 " + name + "？");
+      $('#download-modal').modal('show');
+  }
+  // 搜索按钮
+  function search_media(){
+      var cmd = "search";
+      var keyword = $("#search_word").val();
+      if(keyword == ""){
+          return;
+      }
+      $("#search_btn").val("搜索中...");
+      $("#search_btn").attr("disabled", "true");
+      $("#search_tip_title").text("正在搜索 " + keyword + "，请稍后...");
+      $("#search_tip_text").text("");
+      var param = {"search_word": keyword};
+      $("#modal-wait").modal("show");
+      ajax_post(cmd, param, function(ret){
+        $("#modal-wait").modal("hide");
+          //刷新页面
+          navmenu('search?s='+keyword)
+      });
+  }
+  //点击链接下载
+  function download_link(id){
+      var cmd = "download";
+      var data = {"id": id};
+      ajax_post(cmd, data, function(ret){
+         item = $("#download_start_name").val();
+          $("#download_finished_str").text(item + " 添加下载成功！");
+          $("#download-modal-success").modal('show');
+      });
+  }
+
+  //显示搜索规则
+  function show_role_info(){
+    //隐藏
+    $("#search_include").hide();
+    $("#search_exclude").hide();
+    $("#search_note").hide();
+    $("#search_size").hide();
+    //显示
+    $("#search_include_pre").text($("#search_include").val());
+    $("#search_exclude_pre").text($("#search_exclude").val());
+    $("#search_note_pre").text($("#search_note").val());
+    $("#search_size_pre").text($("#search_size").val());
+    $("#search_include_pre").show();
+    $("#search_exclude_pre").show();
+    $("#search_note_pre").show();
+    $("#search_size_pre").show();
+  }
+  //编辑搜索规则
+  function edit_role_info(){
+    //隐藏
+    $("#search_include_pre").hide();
+    $("#search_exclude_pre").hide();
+    $("#search_note_pre").hide();
+    $("#search_size_pre").hide();
+    //显示
+    $("#search_include").show();
+    $("#search_exclude").show();
+    $("#search_note").show();
+    $("#search_size").show();
+  }
+
+  //点击规则按钮
+  function show_role_modal(){
+    //查询信息
+    ajax_post("get_search_rule", {}, function(ret){
+      if(ret.rule[0]){
+        //赋值
+        $("#search_include").val(ret.rule[0][0]);
+        $("#search_exclude").val(ret.rule[0][1]);
+        $("#search_note").val(ret.rule[0][2]);
+        $("#search_size").val(ret.rule[0][3]);
+      }
+      show_role_info();
+      $("#save_or_edit_rule_btn").text("编辑");
+      $("#modal-search-rule").modal("show");
+    });
+  }
+
+  //保存搜索规则
+  function save_search_rule(){
+    var search_include = $("#search_include").val();
+    var search_exclude = $("#search_exclude").val();
+    var search_note = $("#search_note").val();
+    var search_size = $("#search_size").val();
+    if(search_size){
+      var reg = /^[0-9,]*$/;
+      if(!reg.test(search_size)){
+        $("#search_size").addClass("is-invalid");
+        return;
+      }else{
+        $("#search_size").removeClass("is-invalid");
+      }
+    }
+    var data = {"search_include":search_include,"search_exclude":search_exclude,"search_note":search_note,"search_size":search_size}
+    ajax_post("update_search_rule", data, function(ret){
+      show_role_info();
+      $("#save_or_edit_rule_btn").text("编辑");
+    });
+  }
+
+  // 下载模态框事件
+  $("#download_start_btn").click(function(){
+      $('#download-modal').modal('hide');
+      download_link($("#download_start_id").val());
+  });
+
+  // 搜索输入框
+  $('#search_word').bind('keypress',function(event){
+     if(event.keyCode == "13")
+     {
+       search_media();
+     }
+  });
+
+  //规则编辑保存
+  $("#save_or_edit_rule_btn").click(function(){
+      if($("#save_or_edit_rule_btn").text() == "编辑"){
+        edit_role_info();
+        $("#save_or_edit_rule_btn").text("保存");
+      }else{
+        save_search_rule();
+      }
+  });
+</script>

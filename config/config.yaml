@@ -1,0 +1,49 @@
+app:
+  # 【日志记录类型】：server、file
+  # 如果是使用Docker安装建议设置为file，将日志输出到配置文件目录
+  # 如果是使用群晖套件建议配置为 server，可将日志输出到群晖的日志中心便于查看
+  logtype: file
+  # 【日志文件的路径】：logtype为file时生效
+  logpath: '/config/logs'
+  # 【WEB管理界面端口】：默认80
+  web_port: 80
+  # 【WEB管理页面登录用户】，默认admin
+  login_user: admin
+  # 【WEB管理页面登录密码】：默认password，如果是全数字密码，要用''括起来
+  login_password: password
+  # 【WEB管理界面使用的HTTPS的证书和KEY的路径】，留空则不启用HTTPS
+  ssl_cert:
+  ssl_key:
+
+# 【配置消息通知服务】
+message:
+  # 【发送消息使用的渠道】：wechat、serverchan、telegram、bark，需在对应的配置区域配置。不使用的渠道配置可以留空或者删除。推荐使用wechat微信渠道。不设置则不启用消息服务
+  msg_channel: bark
+  bark:
+    # 自己搭建请更换，否则保持默认
+    server: https://api.day.app
+    # Bark客户端生成的KEY
+    apikey: AmGnn9WZSJKfcsCcjDYnim
+    custom:
+      0:
+        # 第三方推送服务使用的token
+        token: AGZpWR6JbUacKjH
+        # Bark消息铃声
+        sound: telegraph
+        # Bark消息关联群组
+        group: watchtower
+        # Bark icon
+        icon: https://s1.ax1x.com/2022/05/01/OCm3L9.png
+        # Bark 跳转打开url
+        url:
+      1:
+        # 第三方推送服务使用的token
+        token:
+        # Bark消息铃声
+        sound: telegraph
+        # Bark消息关联群组
+        group:
+        # Bark icon
+        icon: https://s1.ax1x.com/2022/05/01/OCm3L9.png
+        # Bark 跳转打开url
+        url:
