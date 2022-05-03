@@ -4,11 +4,11 @@ ENV LANG="C.UTF-8" \
     MSG2BARK_CONFIG="/config/config.yaml" \
     MSG2BARK_AUTO_UPDATE=true \
     PS1="\u@\h:\w \$ " \
-    REPO_URL="https://github.com/jxxghp/nas-tools.git" \
+    REPO_URL="https://ghproxy.com/https://github.com/AnlakHui/msg2bark.git" \
     PUID=0 \
     PGID=0 \
     UMASK=000 \
-    WORKDIR="/nas-tools"
+    WORKDIR="/msg2bark"
 WORKDIR ${WORKDIR}
 RUN apk add --no-cache \
        git \
@@ -38,4 +38,4 @@ RUN apk add --no-cache \
        /root/.cache \
        /var/cache/apk/*
 VOLUME ["/config"]
-ENTRYPOINT ["/nas-tools/docker/entrypoint.sh"]
+ENTRYPOINT ["/msg2bark/docker/entrypoint.sh"]

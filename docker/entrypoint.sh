@@ -27,7 +27,7 @@ if [ "$MSG2BARK_AUTO_UPDATE" = "true" ]; then
         echo "更新失败，继续使用旧的程序来启动..."
     fi
 else
-    echo "程序自动升级已关闭，如需自动升级请在创建容器时设置环境变量：NASTOOL_AUTO_UPDATE=true"
+    echo "程序自动升级已关闭，如需自动升级请在创建容器时设置环境变量：MSG2BARK_AUTO_UPDATE=true"
 fi
 
 echo "以PUID=${PUID}，PGID=${PGID}的身份启动程序..."
