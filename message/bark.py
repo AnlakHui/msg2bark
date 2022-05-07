@@ -60,6 +60,7 @@ class Bark:
                     }),
                     timeout=10
                 )
+                log.info("【MSG】发送{0}消息：title:{1},text:{2},group:{3},icon:{4},url:{5}" % (self.__msg_channel, title, text, custom_cfg['group'], custom_cfg['icon'], custom_cfg['url']))
                 if res:
                     ret_json = res.json()
                     code = ret_json['code']
