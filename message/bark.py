@@ -20,14 +20,14 @@ class Bark:
 
 
     def get_config(self,token):
-        result = {'sound':"",'group':"",'icon':"",'url':""}
+        result = {'level':"",'sound':"",'group':"",'icon':"",'url':""}
         try:
             for key,value in self.__custom.items():
-                keylist = ['sound','group','icon','url']
+                keylist = ['level','sound','group','icon','url']
                 if value['token'] == token:
                     for item in keylist:
                         result[item] = value[item]
-                return True, result
+            return True, result
         except Exception as msg_e:
             return False, str(msg_e)
 
@@ -51,10 +51,11 @@ class Bark:
                         "device_key": self.__apikey,
                         "title": title,
                         "category": "category",
+                        "level": (custom_cfg['level']),
                         "sound": (custom_cfg['sound'] if custom_cfg['sound'] else "telegraph"),
                         "badge": 1,
                         "icon": custom_cfg['icon'],
-                        "group": (custom_cfg['group'] if custom_cfg['group'] else "未知"),
+                        "group": (custom_cfg['group'] if custom_cfg['group'] else "默认"),
                         "url": (custom_cfg['url'] if custom_cfg['url'] else "")
                     }),
                     timeout=10

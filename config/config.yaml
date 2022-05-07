@@ -23,27 +23,31 @@ message:
     # 自己搭建请更换，否则保持默认
     server: https://api.day.app
     # Bark客户端生成的KEY
-    apikey: 9wVyUE2CWqHgcg8KmJyVck
+    apikey: AmGnn9WZSJKfcsCcjDYnim
     custom:
       0:
         # 第三方推送服务使用的token
         token: AGZpWR6JbUacKjH
+        # Bark 时效性通知。active：不设置时的默认值，系统会立即亮屏显示通知；timeSensitive：时效性通知，可在专注状态下显示通知。；passive：仅将通知添加到通知列表，不会亮屏提醒；
+        level:
         # Bark消息铃声，默认telegraph
         sound: telegraph
         # Bark消息关联群组，默认“未知”
         group: watchtower
-        # Bark icon
+        # Bark icon (仅 iOS15 或以上支持）
         icon: https://s1.ax1x.com/2022/05/01/OCm3L9.png
         # Bark 跳转打开url
         url:
       1:
         # 第三方推送服务使用的token
-        token:
+        token: JubqeH4dg8gayeQi8hQRhL
+        # Bark 时效性通知。active：不设置时的默认值，系统会立即亮屏显示通知；timeSensitive：时效性通知，可在专注状态下显示通知。；passive：仅将通知添加到通知列表，不会亮屏提醒；
+        level: passive
         # Bark消息铃声
         sound: telegraph
         # Bark消息关联群组
-        group: watchtower
-        # Bark icon
-        icon: https://s1.ax1x.com/2022/05/01/OCm3L9.png
+        group: qinglong
+        # Bark icon (仅 iOS15 或以上支持）
+        icon: https://s1.ax1x.com/2022/05/07/OQtQtU.png
         # Bark 跳转打开url
         url:
