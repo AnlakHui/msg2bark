@@ -31,7 +31,7 @@ class Message:
 
     # 通用消息发送
     def sendmsg(self, token, title, text=""):
-        # log.info("【MSG】发送%s消息：title=%s, text=%s" % (self.__msg_channel, title, text))
+        log.info("【MSG】发送%s消息：title=%s, text=%s" % (self.__msg_channel, title, text))
         if self.__msg_channel == "bark":
             return self.bark.send_bark_msg(token, title, text)
         else:

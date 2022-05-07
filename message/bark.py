@@ -39,6 +39,7 @@ class Bark:
             if not self.__server or not self.__apikey:
                 return False, "参数未配置"
             custom_cfg = self.get_config(token)
+            print(custom_cfg)
             if custom_cfg[0] == True:
                 custom_cfg = custom_cfg[1]
                 res = requests.post(
